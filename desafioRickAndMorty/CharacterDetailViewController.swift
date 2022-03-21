@@ -10,49 +10,57 @@ import UIKit
 class CharacterDetailViewController: UIViewController {
     static let identifier = "DetailTableViewCell"
     
-    let pictureImage = UIImageView()
-    let nameLabel = UILabel()
-    let specieLabel = UILabel()
-    let genderLabel = UILabel()
-    let statusLabel = UILabel()
-    let buttonInfo = UIButton()
+    let characterImage = UIImageView()
+    let characterName = UILabel()
+    let characterSpecie = UILabel()
+    let characterGender = UILabel()
+    let characterStatus = UILabel()
+    let characterID = UILabel()
+    let moreInformation = UIButton()
     
     var character: Character?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pictureImage.translatesAutoresizingMaskIntoConstraints = false
-        self.pictureImage.clipsToBounds = true
-        self.pictureImage.layer.cornerRadius = 15
+        self.characterImage.translatesAutoresizingMaskIntoConstraints = false
+        self.characterImage.clipsToBounds = true
+        self.characterImage.layer.cornerRadius = 15
         self.view.backgroundColor = .lightGray
 
-        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.nameLabel.font = .italicSystemFont(ofSize: 20)
+        self.characterName.translatesAutoresizingMaskIntoConstraints = false
+        self.characterName.font = .italicSystemFont(ofSize: 30)
+        self.characterName.textAlignment = .center
         
-        self.specieLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.specieLabel.font = .italicSystemFont(ofSize: 15)
+        self.characterSpecie.translatesAutoresizingMaskIntoConstraints = false
+        self.characterSpecie.font = .italicSystemFont(ofSize: 20)
         
-        self.genderLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.genderLabel.font = .italicSystemFont(ofSize: 15)
+        self.characterGender.translatesAutoresizingMaskIntoConstraints = false
+        self.characterGender.font = .italicSystemFont(ofSize: 20)
         
-        self.statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.statusLabel.font = .italicSystemFont(ofSize: 15)
+        self.characterStatus.translatesAutoresizingMaskIntoConstraints = false
+        self.characterStatus.font = .italicSystemFont(ofSize: 20)
         
-        self.buttonInfo.translatesAutoresizingMaskIntoConstraints = false
+        self.characterID.translatesAutoresizingMaskIntoConstraints = false
+        self.characterID.font = .italicSystemFont(ofSize: 20)
+        
+        self.moreInformation.translatesAutoresizingMaskIntoConstraints = false
+        self.moreInformation.backgroundColor = .brown.withAlphaComponent(0.4)
         
         let backgroundViewCharacter = UIView()
         backgroundViewCharacter.translatesAutoresizingMaskIntoConstraints = false
         backgroundViewCharacter.backgroundColor = .white.withAlphaComponent(0.7)
-        backgroundViewCharacter.layer.cornerRadius = 15
+        backgroundViewCharacter.layer.cornerRadius = 16
+        
         
         self.view.addSubview(backgroundViewCharacter)
-        self.view.addSubview(self.pictureImage)
-        self.view.addSubview(self.nameLabel)
-        self.view.addSubview(self.specieLabel)
-        self.view.addSubview(self.genderLabel)
-        self.view.addSubview(self.statusLabel)
-        self.view.addSubview(self.buttonInfo)
+        self.view.addSubview(self.characterImage)
+        self.view.addSubview(self.characterName)
+        self.view.addSubview(self.characterSpecie)
+        self.view.addSubview(self.characterGender)
+        self.view.addSubview(self.characterStatus)
+        self.view.addSubview(self.characterID)
+        self.view.addSubview(self.moreInformation)
         
         NSLayoutConstraint.activate([
             
@@ -61,50 +69,54 @@ class CharacterDetailViewController: UIViewController {
             backgroundViewCharacter.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 8),
             backgroundViewCharacter.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8),
             
-            self.pictureImage.heightAnchor.constraint(equalToConstant: 330),
-            self.pictureImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
-            self.pictureImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
-            self.pictureImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
-           
-            self.nameLabel.bottomAnchor.constraint(equalTo: self.pictureImage.bottomAnchor, constant: 60),
-            self.nameLabel.leftAnchor.constraint(equalTo: self.pictureImage.leftAnchor,constant: 12),
-            self.nameLabel.rightAnchor.constraint(equalTo: self.pictureImage.rightAnchor,constant: 12),
+            self.characterImage.heightAnchor.constraint(equalToConstant: 330),
+            self.characterImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
+            self.characterImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 8),
+            self.characterImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -8),
+
+            self.characterName.topAnchor.constraint(equalTo: backgroundViewCharacter.topAnchor, constant: 20),
+            self.characterName.leftAnchor.constraint(equalTo: backgroundViewCharacter.leftAnchor,constant: 15),
+            self.characterName.rightAnchor.constraint(equalTo: backgroundViewCharacter.rightAnchor,constant: -15),
+
+            self.characterSpecie.topAnchor.constraint(equalTo: self.characterName.bottomAnchor, constant: 10),
+            self.characterSpecie.leftAnchor.constraint(equalTo: backgroundViewCharacter.leftAnchor, constant: 15),
+            self.characterSpecie.rightAnchor.constraint(equalTo: backgroundViewCharacter.rightAnchor, constant: -15),
+
+            self.characterGender.topAnchor.constraint(equalTo: self.characterSpecie.bottomAnchor, constant: 10),
+            self.characterGender.leftAnchor.constraint(equalTo: backgroundViewCharacter.leftAnchor, constant: 15),
+            self.characterGender.rightAnchor.constraint(equalTo: backgroundViewCharacter.rightAnchor, constant: -15),
+
+            self.characterStatus.topAnchor.constraint(equalTo: self.characterGender.bottomAnchor, constant: 10),
+            self.characterStatus.leftAnchor.constraint(equalTo: backgroundViewCharacter.leftAnchor, constant: 15),
+            self.characterStatus.rightAnchor.constraint(equalTo: backgroundViewCharacter.rightAnchor, constant: -15),
+
+            self.characterID.topAnchor.constraint(equalTo: self.characterStatus.bottomAnchor, constant: 10),
+            self.characterID.leftAnchor.constraint(equalTo: backgroundViewCharacter.leftAnchor, constant: 15),
+            self.characterID.rightAnchor.constraint(equalTo: backgroundViewCharacter.rightAnchor, constant: -15),
+
+            self.moreInformation.leftAnchor.constraint(equalTo: backgroundViewCharacter.leftAnchor, constant: 0),
+            self.moreInformation.rightAnchor.constraint(equalTo: backgroundViewCharacter.rightAnchor, constant: 0),
+            self.moreInformation.bottomAnchor.constraint(equalTo: backgroundViewCharacter.bottomAnchor, constant: -16),
             
-            self.specieLabel.bottomAnchor.constraint(equalTo: self.pictureImage.bottomAnchor, constant: 90),
-            self.specieLabel.leftAnchor.constraint(equalTo: self.pictureImage.leftAnchor, constant: 12),
-            self.specieLabel.rightAnchor.constraint(equalTo: self.pictureImage.rightAnchor, constant: 12),
-           
-            self.genderLabel.bottomAnchor.constraint(equalTo: self.pictureImage.bottomAnchor, constant: 120),
-            self.genderLabel.leftAnchor.constraint(equalTo: self.pictureImage.leftAnchor, constant: 12),
-            self.genderLabel.rightAnchor.constraint(equalTo: self.pictureImage.rightAnchor, constant: 12),
-            
-            self.statusLabel.bottomAnchor.constraint(equalTo: self.pictureImage.bottomAnchor, constant: 150),
-            self.statusLabel.leftAnchor.constraint(equalTo: self.pictureImage.leftAnchor, constant: 12),
-            self.statusLabel.rightAnchor.constraint(equalTo: self.pictureImage.rightAnchor, constant: 12),
-           
-            self.buttonInfo.bottomAnchor.constraint(equalTo: self.pictureImage.bottomAnchor, constant: 170),
-            self.buttonInfo.leftAnchor.constraint(equalTo: self.pictureImage.leftAnchor, constant: 200),
-            self.buttonInfo.rightAnchor.constraint(equalTo: self.pictureImage.rightAnchor, constant: 0),
-        
         ])
     }
     
     @objc func buttonAction(_ sender: UIButton!) {
-        print("Button tapped")
-        
         let infoViewController = InfoViewController()
         self.present(infoViewController, animated: true) {
-            infoViewController.carregarTelaInfo(character: self.character!)
+            infoViewController.loadMoreCharacterDetail(character: self.character!)
         }
     }
     
-    func carregarTela(character: Character) {
-        self.nameLabel.text = "\(character.name)"
-        self.specieLabel.text = "Specie: \(character.species)"
-        self.genderLabel.text = "Gender: \(character.gender)"
-        self.statusLabel.text = "Status: \(character.status)"
-        self.buttonInfo.setTitle("+ info", for: .normal)
-        self.buttonInfo.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+    func loadCharacterDetail(character: Character) {
+        self.characterName.text = "\(character.name)"
+        self.characterSpecie.text = "Specie: \(character.species)"
+        self.characterGender.text = "Gender: \(character.gender)"
+        self.characterStatus.text = "Status: \(character.status)"
+        self.characterID.text = "ID: \(character.id)"
+        self.moreInformation.setTitle("+ info", for: .normal)
+        self.moreInformation.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        
         
         self.character = character
         
@@ -116,7 +128,7 @@ class CharacterDetailViewController: UIViewController {
             let image = UIImage(data: imageData as Data)
             
             DispatchQueue.main.async {
-                self.pictureImage.image = image
+                self.characterImage.image = image
             }
         }
     }

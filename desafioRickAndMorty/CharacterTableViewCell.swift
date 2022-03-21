@@ -60,7 +60,7 @@ class CharacterTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func load(character: Character) {
+    func loadCharacter(character: Character) {
         self.characterName.text = "\(character.name)"
         
         DispatchQueue.global().async {

@@ -34,7 +34,7 @@ class ViewController: UITableViewController {
                                                  for: indexPath) as! CharacterTableViewCell
         let character = self.result?.results[indexPath.row]
         
-        cell.load(character: character!)
+        cell.loadCharacter(character: character!)
         
         return cell
     }
@@ -44,7 +44,7 @@ class ViewController: UITableViewController {
         let character = self.result?.results[indexPath.row]
         let characterDetailViewController = CharacterDetailViewController()
         self.present(characterDetailViewController, animated: true) {
-            characterDetailViewController.carregarTela(character: character!)
+            characterDetailViewController.loadCharacterDetail(character: character!)
         }
     }
     
