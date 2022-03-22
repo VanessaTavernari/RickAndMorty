@@ -3,6 +3,9 @@ This project users can meet some information about cartoon character.
 
 They look at a picture with character name, then just need to click and it will open a new view with information about character who was selected. If the user need to more information, there is a *+info* button.
 
+![ezcv logo](images/rickAndMortyScreenShot.png)
+
+## The project
 In this project I worked with *rickandmortyapi*, so I done a struct with the same information from api. There is a function with a parameter to pass url.
 
 JsonDecoder() was used to decodes instances of a data type from JSON objects, I used too DispatchQueue to return tableView.reloadData(), this it will reloads the rows and sections of the table view.
